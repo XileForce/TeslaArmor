@@ -1,0 +1,27 @@
+[18:13:23] [main/INFO]: Setting user: Player15
+[18:13:24] [Client thread/INFO]: LWJGL Version: 2.9.1
+[18:13:28] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
+[18:13:29] [Sound Library Loader/INFO]: Sound engine started
+[18:13:30] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[18:13:30] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[18:13:30] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
+[18:13:30] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[18:13:30] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[18:13:31] [Sound Library Loader/INFO]: Sound engine started
+[18:13:36] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[18:13:36] [Server thread/INFO]: Generating keypair
+[18:13:36] [Server thread/INFO]: Preparing start region for level 0
+[18:13:37] [Server thread/INFO]: Changing view distance to 12, from 10
+[18:13:37] [Server thread/INFO]: Player15[local:E:f92989f6] logged in with entity id 277 at (229.75692780983667, 79.0, 46.96010309759798)
+[18:13:37] [Server thread/INFO]: Player15 joined the game
+[18:14:36] [Server thread/INFO]: Saving and pausing game...
+[18:14:36] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[18:14:36] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[18:14:36] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[18:14:38] [Client thread/INFO]: Stopping!
+[18:14:38] [Server thread/INFO]: Stopping server
+[18:14:38] [Server thread/INFO]: Saving players
+[18:14:38] [Server thread/INFO]: Saving worlds
+[18:14:38] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[18:14:38] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[18:14:38] [Server thread/INFO]: Saving chunks for level 'New World'/The End
