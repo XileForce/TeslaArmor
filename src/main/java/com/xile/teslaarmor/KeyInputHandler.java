@@ -3,11 +3,14 @@ package com.xile.teslaarmor;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent;
+import com.xile.teslaarmor.TeslaArmor;
 
 public class KeyInputHandler {
 
+
     public static boolean ArmorOn;
     public static boolean SwordOn;
+
 
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) {

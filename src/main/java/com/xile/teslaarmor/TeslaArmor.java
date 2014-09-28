@@ -31,6 +31,8 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     public static final ArmorProperties Tesla = new ArmorProperties(0, 0.5D, Integer.MAX_VALUE);
 
     public boolean NoPower;
+    public int EnergyStored;
+
 
     public int maxEnergy = 550000;
     public int maxTransfer = 2500;
@@ -67,14 +69,18 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
 
             return;
         }
+
         if (stack.stackTagCompound == null) {
             EnergyHelper.setDefaultEnergyTag(stack, 0);
         }
         list.add(StringHelper.localize("info.cofh.charge") + ": " + stack.stackTagCompound.getInteger("Energy") + " / " + maxEnergy + " RF");
         list.add("\u00a7a" + "Click X To Toggle AOE Tesla Ability.");
-        list.add("§1" + "Note: Requires Full Suit Worn");
-        list.add("§4" + "Warning: Drains Energy Fast!");
-        list.add("§1" + "Also doesnt work yet!");
+        list.add("Note: Requires Full Suit Worn");
+        list.add("Warning: Drains Energy Fast!");
+        if (KeyInputHandler.ArmorOn == true)
+            list.add("Tesla AOE Effect Activated");
+        if (KeyInputHandler.ArmorOn == false)
+            list.add("Tesla AOE Effect Deactivated");
     }
 
     @Override
@@ -201,9 +207,9 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     }
 
     //Tesla AOE
-    public int EnergyStored;
 
-    public void Energy(ItemStack container) {
+
+    {
 
     }
 
@@ -213,23 +219,39 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
 
 
 
-    //Potion Effects
+    //Armor Effects
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
+
+
         EnergyStored = armor.stackTagCompound.getInteger("Energy");
+        if (EnergyStored < 1) NoPower = true;
         if (KeyInputHandler.ArmorOn == true)
-            if (EnergyStored != 0)
-        player.addPotionEffect(new PotionEffect(Potion.jump.getId(), 200, 10));
+            if (NoPower != true)
+                System.out.println("Tesla AOE Activated");
+        else System.out.println("Tesla Ability Deactivated");
 
 
+        //Just A Test For Charging Armor Without External Mods!
+        if (KeyInputHandler.ArmorOn == false)
+        armor.stackTagCompound.setInteger("Energy", (EnergyStored + 1000));
 
-    }
+        //PotionEffects Not sure why they dont work when all armor equipped... is weird..
+            if (player.inventory.armorItemInSlot(2) == ItemLoader.armorTeslaLegs)
+                if (NoPower != true)
+                    player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 500, 4));
+            if (player.inventory.armorItemInSlot(3) == ItemLoader.armorTeslaBoots)
+                if (NoPower != true)
+                player.addPotionEffect(new PotionEffect(Potion.jump.id, 500, 4));
+        }
+
+
 
 
     public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack) {
 
-        System.out.println(EnergyStored + " is Current Energy Level");
+
 
 
 

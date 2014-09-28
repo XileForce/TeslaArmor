@@ -12,13 +12,13 @@ The assetDir is deprecated!  Use runDir instead! runDir set to eclipse/assets/..
 :apiClasses UP-TO-DATE
 :sourceMainJava
 :compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
-Note: F:\TeslaArmor\build\sources\java\com\xile\teslaarmor\TeslaArmor.java uses or overrides a deprecated API.
+Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
-Note: F:\TeslaArmor\build\sources\java\com\xile\teslaarmor\TeslaArmor.java uses unchecked or unsafe operations.
+Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
 1 warning
 
-:processResources
+:processResources UP-TO-DATE
 :classes
 :jar
 :compileTestJava UP-TO-DATE
@@ -26,6 +26,7 @@ Note: Recompile with -Xlint:unchecked for details.
 :testClasses UP-TO-DATE
 :test UP-TO-DATE
 :extractMcpData UP-TO-DATE
+:getVersionJson
 :extractUserDev UP-TO-DATE
 :genSrgs SKIPPED
 :reobf
@@ -35,4 +36,4 @@ Note: Recompile with -Xlint:unchecked for details.
 
 BUILD SUCCESSFUL
 
-Total time: 35.99 secs
+Total time: 22.719 secs
