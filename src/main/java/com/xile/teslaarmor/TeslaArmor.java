@@ -33,7 +33,7 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     public static final ArmorProperties UNBLOCKABLE = new ArmorProperties(0, 0.0D, 0);
     public static final ArmorProperties Tesla = new ArmorProperties(0, 0.5D, Integer.MAX_VALUE);
 
-    public boolean NoPower;
+    public static boolean NoPower;
     public int EnergyStored;
 
 
@@ -256,15 +256,29 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
         armor.stackTagCompound.setInteger("Energy", (EnergyStored + 1000));
 
         //PotionEffects Not sure why they dont work when all armor equipped... is weird..
-            if (player.inventory.armorItemInSlot(2) == ItemLoader.armorTeslaLegs)
+
+            if (player.inventory.armorItemInSlot(2) == ItemLoader.armorTeslaLegs) {
                 if (NoPower != true)
                     player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 500, 4));
-            if (player.inventory.armorItemInSlot(3) == ItemLoader.armorTeslaBoots)
-                if (NoPower != true)
-                player.addPotionEffect(new PotionEffect(Potion.jump.id, 500, 4));
+            }
 
-        List entities = world.getEntitiesWithinAABB(getClass(), axisalignedbb);
-        System.out.println("These Entities Are within Range!" + entities + "");
+
+            if (player.inventory.armorItemInSlot(3) == ItemLoader.armorTeslaBoots) {
+                if (NoPower != true)
+                    player.addPotionEffect(new PotionEffect(Potion.jump.id, 500, 4));
+            }
+
+        //ChestPlate Flight
+
+
+
+
+
+
+
+
+
+
 
 
         }

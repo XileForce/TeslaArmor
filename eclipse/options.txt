@@ -87,6 +87,7 @@ key_key.hotbar.8:9
 key_key.hotbar.9:10
 key_key.ArmorToggle:45
 key_key.SwordToggle:47
+key_key.FlightToggle:43
 soundCategory_master:1.0
 soundCategory_music:1.0
 soundCategory_record:1.0

@@ -10,6 +10,7 @@ public class KeyInputHandler {
 
     public static boolean ArmorOn;
     public static boolean SwordOn;
+    public static boolean FlightOn;
 
 
     @SubscribeEvent
@@ -20,6 +21,11 @@ public class KeyInputHandler {
             System.out.println("Armor Powered On");
         if (ArmorOn == false)
             System.out.println("Armor Powered Off");
+        if(TeslaMainLoader.FlightToggle.isPressed())
+            FlightOn ^= true;
+        if (FlightOn == true) System.out.println("Flight On");
+        if (FlightOn == false)
+        System.out.println("Armor Powered Off");
 
 
         if(TeslaMainLoader.SwordToggle.isPressed())

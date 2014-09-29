@@ -24,6 +24,7 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.xile.teslaarmor.ItemLoader;
@@ -38,6 +39,7 @@ public class TeslaMainLoader {
     public static Item ElectrifiedIngot;
     public static KeyBinding ArmorToggle;
     public static KeyBinding SwordToggle;
+    public static KeyBinding FlightToggle;
 
     // The instance of your mod that Forge uses.
     @Instance(value = "TA")
@@ -66,9 +68,12 @@ public class TeslaMainLoader {
         ItemLoader.initialize();
         ArmorToggle = new KeyBinding("key.ArmorToggle", Keyboard.KEY_X, "key.categories.TeslaArmor");
         SwordToggle = new KeyBinding("key.SwordToggle", Keyboard.KEY_V, "key.categories.TeslaArmor");
+        FlightToggle = new KeyBinding("key.FlightToggle", Keyboard.KEY_BACKSLASH, "key.categories.TeslaArmor");
         ClientRegistry.registerKeyBinding(ArmorToggle);
         ClientRegistry.registerKeyBinding(SwordToggle);
+        ClientRegistry.registerKeyBinding(FlightToggle);
         FMLCommonHandler.instance().bus().register(new KeyInputHandler());
+        MinecraftForge.EVENT_BUS.register(new com.xile.teslaarmor.EventHandler());
 
 
     }
