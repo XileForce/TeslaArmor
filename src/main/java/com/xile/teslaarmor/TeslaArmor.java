@@ -10,14 +10,17 @@ import java.awt.event.InputEvent;
 import java.util.List;
 import com.xile.teslaarmor.TeslaMainLoader;
 
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
@@ -209,18 +212,33 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     //Tesla AOE
 
 
-    {
+
+
+
+
+
+
+
+
+
+
+    //Bounding Box Attempt :/
+    public double minX;
+    public double minY;
+    public double minZ;
+    public double maxX;
+    public double maxY;
+    public double maxZ;
+    public AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(minX, minY, minZ, maxX, maxY, maxZ); {
+        this.minX = 0;
+        this.minY = 0;
+        this.minZ = 0;
+        this.maxX = 10;
+        this.maxY = 10;
+        this.maxZ = 10;
 
     }
-
-
-
-
-
-
-
-    //Armor Effects
-
+//Armor Effects
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 
@@ -244,7 +262,17 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
             if (player.inventory.armorItemInSlot(3) == ItemLoader.armorTeslaBoots)
                 if (NoPower != true)
                 player.addPotionEffect(new PotionEffect(Potion.jump.id, 500, 4));
+
+        List entities = world.getEntitiesWithinAABB(getClass(), axisalignedbb);
+        System.out.println("These Entities Are within Range!" + entities + "");
+
+
         }
+
+
+
+
+
 
 
 
