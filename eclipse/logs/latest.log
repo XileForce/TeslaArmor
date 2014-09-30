@@ -1,16 +1,33 @@
-[23:54:25] [main/INFO]: Setting user: Player515
-[23:54:26] [Client thread/INFO]: LWJGL Version: 2.9.1
-[23:54:30] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
-[23:54:31] [Sound Library Loader/INFO]: Sound engine started
-[23:54:32] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[23:54:32] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[23:54:33] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
-[23:54:33] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[23:54:33] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[23:54:34] [Sound Library Loader/INFO]: Sound engine started
-[23:54:37] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
-[23:54:37] [Server thread/INFO]: Generating keypair
-[23:54:38] [Server thread/INFO]: Preparing start region for level 0
-[23:54:39] [Server thread/INFO]: Changing view distance to 12, from 10
-[23:54:39] [Server thread/INFO]: Player515[local:E:25227e37] logged in with entity id 262 at (398.44390861403474, 83.0, 135.81261415586977)
-[23:54:39] [Server thread/INFO]: Player515 joined the game
+[16:43:20] [main/INFO]: Setting user: Player953
+[16:43:21] [Client thread/INFO]: LWJGL Version: 2.9.1
+[16:43:25] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
+[16:43:26] [Sound Library Loader/INFO]: Sound engine started
+[16:43:27] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[16:43:27] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[16:43:27] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
+[16:43:27] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[16:43:27] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[16:43:28] [Sound Library Loader/INFO]: Sound engine started
+[16:43:31] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
+[16:43:31] [Server thread/INFO]: Generating keypair
+[16:43:31] [Server thread/INFO]: Preparing start region for level 0
+[16:43:32] [Server thread/INFO]: Changing view distance to 12, from 10
+[16:43:32] [Server thread/INFO]: Player953[local:E:fc8feddc] logged in with entity id 339 at (168.58031433315185, 64.0, 33.91845503317276)
+[16:43:32] [Server thread/INFO]: Player953 joined the game
+[16:43:33] [Server thread/INFO]: Saving and pausing game...
+[16:43:33] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[16:43:33] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[16:43:33] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[16:43:38] [Server thread/INFO]: Player953 has just earned the achievement [Taking Inventory]
+[16:43:38] [Client thread/INFO]: [CHAT] Player953 has just earned the achievement [Taking Inventory]
+[16:44:40] [Server thread/INFO]: Saving and pausing game...
+[16:44:40] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[16:44:40] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[16:44:40] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[16:44:42] [Client thread/INFO]: Stopping!
+[16:44:42] [Server thread/INFO]: Stopping server
+[16:44:42] [Server thread/INFO]: Saving players
+[16:44:42] [Server thread/INFO]: Saving worlds
+[16:44:42] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[16:44:42] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[16:44:42] [Server thread/INFO]: Saving chunks for level 'New World'/The End

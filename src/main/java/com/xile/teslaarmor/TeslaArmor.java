@@ -10,6 +10,7 @@ import java.awt.event.InputEvent;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.concurrent.TimeUnit;
 
 import com.xile.teslaarmor.TeslaMainLoader;
 
@@ -226,7 +227,7 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
 
 
 @Override
-    public void onArmorTick(World world, EntityPlayer player,EntityLivingBase ent, ItemStack armor) {
+    public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 
     EnergyStored = armor.stackTagCompound.getInteger("Energy");
     if (EnergyStored < 1) NoPower = true;
@@ -253,34 +254,33 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     }
 
     //Attempt at Entity scan and target
-    if (KeyInputHandler.ArmorOn == true) {
+    //Works But needs to filter player now.
+    if (KeyInputHandler.ArmorOn == true && (NoPower == false)) {
+        armor.stackTagCompound.setInteger("Energy", (EnergyStored - 500));
         System.out.println("Scanner Activated");
-        List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX - 5, player.posY - 5, player.posZ - 5, player.posX + 7, player.posY + 7, player.posZ + 7));
-        Iterator iterator = entities.iterator();
-        float X = 0;
-        float Y = 0;
-        float Z = 0;
-        double posX;
-        double posY;
-        double posZ;
+        List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX - 12, player.posY - 12, player.posZ - 12, player.posX + 12, player.posY + 12, player.posZ + 12));
+        if (entities != null && !entities.isEmpty()) {
+            Iterator iterator = entities.iterator();
 
-        while (iterator.hasNext());
-        ent = (EntityLivingBase)iterator.next();
-        ent.getPosition(X);
-        ent.getPosition(Y);
-        ent.getPosition(Z);
-        posX = X;
-        posY = Y;
-        posZ = Z;
+            double posX;
+            double posY;
+            double posZ;
+            EntityLivingBase ent;
 
 
+                while (iterator.hasNext())
+                {
 
+                ent = (EntityLivingBase) iterator.next();
+                posX = ent.posX;
+                posY = ent.posY;
+                posZ = ent.posZ;
 
+                EntityLightningBolt Lightning = new EntityLightningBolt(world, posX, posY, posZ);
+                world.spawnEntityInWorld(Lightning);
 
-        EntityLightningBolt Lightning = new EntityLightningBolt(world, posX, posY, posZ);
-
-        world.spawnEntityInWorld(Lightning);
-        System.out.println("Nearby Entities" + entities + "!");
+            }
+        }
     }
 
 }
