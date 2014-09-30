@@ -7,14 +7,20 @@ import cofh.lib.util.helpers.EnergyHelper;
 import cofh.lib.util.helpers.StringHelper;
 
 import java.awt.event.InputEvent;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+
 import com.xile.teslaarmor.TeslaMainLoader;
 
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -215,79 +221,69 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
 
 
 
-
-
-
-
-
-
-
-    //Bounding Box Attempt :/
-    public double minX;
-    public double minY;
-    public double minZ;
-    public double maxX;
-    public double maxY;
-    public double maxZ;
-    public AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(minX, minY, minZ, maxX, maxY, maxZ); {
-        this.minX = 0;
-        this.minY = 0;
-        this.minZ = 0;
-        this.maxX = 10;
-        this.maxY = 10;
-        this.maxZ = 10;
-
-    }
 //Armor Effects
-    @Override
-    public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
 
 
-        EnergyStored = armor.stackTagCompound.getInteger("Energy");
-        if (EnergyStored < 1) NoPower = true;
-        if (KeyInputHandler.ArmorOn == true)
-            if (NoPower != true)
-                System.out.println("Tesla AOE Activated");
+
+@Override
+    public void onArmorTick(World world, EntityPlayer player,EntityLivingBase ent, ItemStack armor) {
+
+    EnergyStored = armor.stackTagCompound.getInteger("Energy");
+    if (EnergyStored < 1) NoPower = true;
+    if (KeyInputHandler.ArmorOn == true && (NoPower != true))
+            System.out.println("Tesla AOE Activated");
         else System.out.println("Tesla Ability Deactivated");
 
 
-        //Just A Test For Charging Armor Without External Mods!
-        if (KeyInputHandler.ArmorOn == false)
+    //Just A Test For Charging Armor Without External Mods!
+    if (KeyInputHandler.ArmorOn == false)
         armor.stackTagCompound.setInteger("Energy", (EnergyStored + 1000));
 
-        //PotionEffects Not sure why they dont work when all armor equipped... is weird..
+    //PotionEffects Not sure why they dont work when all armor equipped... is weird..
 
-            if (player.inventory.armorItemInSlot(2) == ItemLoader.armorTeslaLegs) {
-                if (NoPower != true)
-                    player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 500, 4));
-            }
-
-
-            if (player.inventory.armorItemInSlot(3) == ItemLoader.armorTeslaBoots) {
-                if (NoPower != true)
-                    player.addPotionEffect(new PotionEffect(Potion.jump.id, 500, 4));
-            }
-
-        //ChestPlate Flight
+    if (player.inventory.armorItemInSlot(2) == ItemLoader.armorTeslaLegs) {
+        if (NoPower != true)
+            player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 500, 4));
+    }
 
 
+    if (player.inventory.armorItemInSlot(3) == ItemLoader.armorTeslaBoots) {
+        if (NoPower != true)
+            player.addPotionEffect(new PotionEffect(Potion.jump.id, 500, 4));
+    }
+
+    //Attempt at Entity scan and target
+    if (KeyInputHandler.ArmorOn == true) {
+        System.out.println("Scanner Activated");
+        List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX - 5, player.posY - 5, player.posZ - 5, player.posX + 7, player.posY + 7, player.posZ + 7));
+        Iterator iterator = entities.iterator();
+        float X = 0;
+        float Y = 0;
+        float Z = 0;
+        double posX;
+        double posY;
+        double posZ;
+
+        while (iterator.hasNext());
+        ent = (EntityLivingBase)iterator.next();
+        ent.getPosition(X);
+        ent.getPosition(Y);
+        ent.getPosition(Z);
+        posX = X;
+        posY = Y;
+        posZ = Z;
 
 
 
 
 
+        EntityLightningBolt Lightning = new EntityLightningBolt(world, posX, posY, posZ);
 
+        world.spawnEntityInWorld(Lightning);
+        System.out.println("Nearby Entities" + entities + "!");
+    }
 
-
-
-
-        }
-
-
-
-
-
-
+}
 
 
 
@@ -300,6 +296,8 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
 
 
     }
+
+
 }
 
 
