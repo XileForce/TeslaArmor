@@ -43,28 +43,31 @@ public class ItemLoader {
     }
 
     private static void loadItems() {
-        ItemStack armorTeslaHelmet;
-        ItemStack armorTeslaChest;
-        ItemStack armorTeslaLegs;
-        ItemStack armorTeslaBoots;
+
 
 
 		// Create Armor Stacks
-        armorTeslaHelmet = EnergyHelper.setDefaultEnergyTag(new ItemStack(itemHelmetTesla), 0);
-        armorTeslaChest = EnergyHelper.setDefaultEnergyTag(new ItemStack(itemChestTesla), 0);
-        armorTeslaLegs = EnergyHelper.setDefaultEnergyTag(new ItemStack(itemLegsTesla), 0);
-        armorTeslaBoots = EnergyHelper.setDefaultEnergyTag(new ItemStack(itemBootsTesla), 0);
+        ArmorTeslaHelmet = EnergyHelper.setDefaultEnergyTag(new ItemStack(itemHelmetTesla), 0);
+        ArmorTeslaChest = EnergyHelper.setDefaultEnergyTag(new ItemStack(itemChestTesla), 0);
+        ArmorTeslaLegs = EnergyHelper.setDefaultEnergyTag(new ItemStack(itemLegsTesla), 0);
+        ArmorTeslaBoots = EnergyHelper.setDefaultEnergyTag(new ItemStack(itemBootsTesla), 0);
 
-        GameRegistry.registerCustomItemStack("armorTeslaHelmet", armorTeslaHelmet);
-        GameRegistry.registerCustomItemStack("armorTeslaPlate", armorTeslaChest);
-        GameRegistry.registerCustomItemStack("armorTeslaLegs", armorTeslaLegs);
-        GameRegistry.registerCustomItemStack("armorTeslaBoots", armorTeslaBoots);
+        GameRegistry.registerCustomItemStack("armorTeslaHelmet", ArmorTeslaHelmet);
+        GameRegistry.registerCustomItemStack("armorTeslaPlate", ArmorTeslaChest);
+        GameRegistry.registerCustomItemStack("armorTeslaLegs", ArmorTeslaLegs);
+        GameRegistry.registerCustomItemStack("armorTeslaBoots", ArmorTeslaBoots);
     }
     public static void postInit(){}
 
     //Register All Public Variables
+    public static ItemStack ArmorTeslaHelmet;
+    public static ItemStack ArmorTeslaChest;
+    public static ItemStack ArmorTeslaLegs;
+    public static ItemStack ArmorTeslaBoots;
+
     protected static int mMaximumEnergyGeneration;
     protected static int mMaximumEnergyTransfer;
+
 
     public static TeslaArmor itemHelmetTesla;
     public static TeslaArmor itemChestTesla;
@@ -73,10 +76,7 @@ public class ItemLoader {
 
     public static ElectrifiedIngot ElectrifiedIngot;
 
-    public static ItemStack armorTeslaHelmet;
-    public static ItemStack armorTeslaPlate;
-    public static ItemStack armorTeslaLegs;
-    public static ItemStack armorTeslaBoots;
+
 
     //Texture Info
     public static final ItemArmor.ArmorMaterial ARMOR_MATERIAL_Tesla = EnumHelper.addArmorMaterial("RA_Tesla", 10, new int[] { 3, 8, 6, 3 }, 20);

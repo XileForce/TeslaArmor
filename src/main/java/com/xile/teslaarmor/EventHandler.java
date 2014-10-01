@@ -29,9 +29,9 @@ public class EventHandler {
 
             //Currently Detects Keypresses to toggle flight but works without armor worn...unsure why
 
-            if (player.inventory.armorItemInSlot(1) == ItemLoader.armorTeslaPlate && (TeslaArmor.NoPower != true) && (KeyInputHandler.FlightOn == true)) {
+            if (player.inventory.armorItemInSlot(2) == ItemLoader.ArmorTeslaChest && (TeslaArmor.NoPower != true) && (KeyInputHandler.FlightOn == true)) {
                 player.capabilities.allowFlying = true;
-            } else if (player.inventory.armorItemInSlot(1) != ItemLoader.armorTeslaPlate && !player.capabilities.isCreativeMode || (TeslaArmor.NoPower == true) || KeyInputHandler.FlightOn == false) {
+            } else if (player.inventory.armorItemInSlot(2) != ItemLoader.ArmorTeslaChest && !player.capabilities.isCreativeMode || (TeslaArmor.NoPower == true) || KeyInputHandler.FlightOn == false) {
                 player.capabilities.allowFlying = false;
                 player.capabilities.isFlying = false;
 

@@ -223,18 +223,23 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
 
 
 //Armor Effects
-
+int Ticks = 0;
 
 
 @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
+    //0 is Boots
+    //1 is Legs
+    //2 is Chest
+    //3 is Helm
+    ItemStack armorslot = player.inventory.armorItemInSlot(0);
+    System.out.println(armorslot + " Is Equipped");
 
+    if (player.inventory.armorItemInSlot(0) == ItemLoader.ArmorTeslaBoots) {
+        System.out.println("Boots worn");
+    }
     EnergyStored = armor.stackTagCompound.getInteger("Energy");
     if (EnergyStored < 1) NoPower = true;
-    if (KeyInputHandler.ArmorOn == true && (NoPower != true))
-            System.out.println("Tesla AOE Activated");
-        else System.out.println("Tesla Ability Deactivated");
-
 
     //Just A Test For Charging Armor Without External Mods!
     if (KeyInputHandler.ArmorOn == false)
@@ -242,13 +247,13 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
 
     //PotionEffects Not sure why they dont work when all armor equipped... is weird..
 
-    if (player.inventory.armorItemInSlot(2) == ItemLoader.armorTeslaLegs) {
+    if (player.inventory.armorItemInSlot(2) == ItemLoader.ArmorTeslaLegs) {
         if (NoPower != true)
             player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 500, 4));
     }
 
 
-    if (player.inventory.armorItemInSlot(3) == ItemLoader.armorTeslaBoots) {
+    if (player.inventory.armorItemInSlot(3) == ItemLoader.ArmorTeslaBoots) {
         if (NoPower != true)
             player.addPotionEffect(new PotionEffect(Potion.jump.id, 500, 4));
     }
@@ -256,34 +261,42 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     //Attempt at Entity scan and target
     //Works But needs to filter player now.
     if (KeyInputHandler.ArmorOn == true && (NoPower == false)) {
-        armor.stackTagCompound.setInteger("Energy", (EnergyStored - 500));
-        System.out.println("Scanner Activated");
-        List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX - 12, player.posY - 12, player.posZ - 12, player.posX + 12, player.posY + 12, player.posZ + 12));
-        if (entities != null && !entities.isEmpty()) {
-            Iterator iterator = entities.iterator();
+            armor.stackTagCompound.setInteger("Energy", (EnergyStored - 800));
 
-            double posX;
-            double posY;
-            double posZ;
-            EntityLivingBase ent;
+            List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX - 12, player.posY - 12, player.posZ - 12, player.posX + 12, player.posY + 12, player.posZ + 12));
+            if (entities != null && !entities.isEmpty()) {
+                Iterator iterator = entities.iterator();
+
+                double posX;
+                double posY;
+                double posZ;
+
+                EntityLivingBase ent;
+                Ticks++;
+                System.out.println("This many ticks has passed " + Ticks);
+
+                while (iterator.hasNext() && (Ticks >= 50)) {
+
+                    ent = (EntityLivingBase) iterator.next();
+                    posX = ent.posX;
+                    posY = ent.posY;
+                    posZ = ent.posZ;
 
 
-                while (iterator.hasNext())
-                {
+                    EntityLightningBolt Lightning = new EntityLightningBolt(world, posX, posY, posZ);
+                    world.spawnEntityInWorld(Lightning);
+                    Ticks = 0;
+                    {
 
-                ent = (EntityLivingBase) iterator.next();
-                posX = ent.posX;
-                posY = ent.posY;
-                posZ = ent.posZ;
+                    }
 
-                EntityLightningBolt Lightning = new EntityLightningBolt(world, posX, posY, posZ);
-                world.spawnEntityInWorld(Lightning);
-
+                }
             }
         }
     }
 
-}
+
+
 
 
 
