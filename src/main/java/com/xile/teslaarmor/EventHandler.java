@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 
 import java.util.Iterator;
 import java.util.List;
@@ -51,6 +52,9 @@ public class EventHandler {
             }
             if (TeslaArmor.TLegsWorn == false || TeslaArmor.EnergyStored <= 0){
                 player.capabilities.setPlayerWalkSpeed(0.1F);
+            }
+            if (TeslaArmor.TBootsWorn == true && TeslaArmor.EnergyStored > 0){
+                player.fallDistance = 0;
             }
 
             }

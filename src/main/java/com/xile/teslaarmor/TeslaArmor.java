@@ -2,26 +2,12 @@ package com.xile.teslaarmor;
 
 import cofh.api.energy.IEnergyContainerItem;
 import cofh.core.item.ItemArmorAdv;
-import cofh.core.util.KeyBindingEmpower;
 import cofh.lib.util.helpers.EnergyHelper;
 import cofh.lib.util.helpers.StringHelper;
-
-import java.awt.event.InputEvent;
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.concurrent.TimeUnit;
-
-import com.xile.teslaarmor.TeslaMainLoader;
-
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -31,7 +17,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
-import org.lwjgl.input.Keyboard;
 
 
 public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyContainerItem {
@@ -276,13 +261,16 @@ public static boolean THelmWorn;
     EnergyStored = armor.stackTagCompound.getInteger("Energy");
 
     //Just A Test For Charging Armor Without External Mods!
-    if (KeyInputHandler.ArmorOn == false)
-        armor.stackTagCompound.setInteger("Energy", (EnergyStored + 1000));
+    //if (KeyInputHandler.ArmorOn == false)
+       // armor.stackTagCompound.setInteger("Energy", (EnergyStored + 1000));
+
 
     //PotionEffects
-
     if (TBootsWorn == true && (EnergyStored > 0)) {
             player.addPotionEffect(new PotionEffect(Potion.jump.id, 500, 4));
+    }
+    if (THelmWorn == true && EnergyStored > 0){
+        player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 500, 4));
     }
     if (EventHandler.Flight == true){
         armor.stackTagCompound.setInteger("Energy", (EnergyStored - 50));

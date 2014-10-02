@@ -7,9 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import com.xile.teslaarmor.TeslaArmor;
-import com.xile.teslaarmor.TeslaMainLoader;
-import com.xile.teslaarmor.ElectrifiedIngot;
 
 public class ItemLoader {
 
@@ -26,7 +23,7 @@ public class ItemLoader {
         itemChestTesla = (TeslaArmor) new TeslaArmor(ARMOR_MATERIAL_Tesla, 1).setArmorTextures(TEXTURE_Tesla).setUnlocalizedName("ArmorTeslaChest")
                 .setTextureName("TA:TChest").setCreativeTab(TeslaMainLoader.TeslaArmor);
         itemLegsTesla = (TeslaArmor) new TeslaArmor(ARMOR_MATERIAL_Tesla, 2).setArmorTextures(TEXTURE_Tesla).setUnlocalizedName("ArmorTeslaLegs")
-                .setTextureName("TA:Tlegs").setCreativeTab(TeslaMainLoader.TeslaArmor);
+                .setTextureName("TA:TLegs").setCreativeTab(TeslaMainLoader.TeslaArmor);
         itemBootsTesla = (TeslaArmor) new TeslaArmor(ARMOR_MATERIAL_Tesla, 3).setArmorTextures(TEXTURE_Tesla).setUnlocalizedName("ArmorTeslaBoots")
                 .setTextureName("TA:TBoots").setCreativeTab(TeslaMainLoader.TeslaArmor);
         GameRegistry.registerItem(itemHelmetTesla, "armor.helmetTesla");

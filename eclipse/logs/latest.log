@@ -1,25 +1,11 @@
-[17:44:44] [main/INFO]: Setting user: Player750
-[17:44:45] [Client thread/INFO]: LWJGL Version: 2.9.1
-[17:44:48] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
-[17:44:49] [Sound Library Loader/INFO]: Sound engine started
-[17:44:50] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[17:44:50] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[17:44:51] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
-[17:44:51] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[17:44:51] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[17:44:52] [Sound Library Loader/INFO]: Sound engine started
-[17:44:59] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
-[17:44:59] [Server thread/INFO]: Generating keypair
-[17:45:00] [Server thread/INFO]: Preparing start region for level 0
-[17:45:00] [Server thread/INFO]: Changing view distance to 12, from 10
-[17:45:01] [Server thread/INFO]: Player750[local:E:dd83a603] logged in with entity id 243 at (289.91794163110586, 72.0, -9.900713910403)
-[17:45:01] [Server thread/INFO]: Player750 joined the game
-[17:47:41] [Client thread/INFO]: Stopping!
-[17:47:41] [Server thread/INFO]: Stopping server
-[17:47:41] [Server thread/INFO]: Saving players
-[17:47:41] [Server thread/INFO]: Saving worlds
-[17:47:41] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[17:47:41] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[17:47:41] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[17:47:41] [Client Shutdown Thread/INFO]: Stopping server
-[17:47:41] [Client Shutdown Thread/INFO]: Saving players
+[21:45:49] [main/INFO]: Setting user: Player406
+[21:45:50] [Client thread/INFO]: LWJGL Version: 2.9.1
+[21:45:54] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
+[21:45:55] [Sound Library Loader/INFO]: Sound engine started
+[21:45:56] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[21:45:56] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[21:45:56] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Tesla Armor, FMLFileResourcePack:CoFH Core
+[21:45:56] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[21:45:56] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[21:45:57] [Sound Library Loader/INFO]: Sound engine started
+[21:46:01] [Client thread/INFO]: Stopping!

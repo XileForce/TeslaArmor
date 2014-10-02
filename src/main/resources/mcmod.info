@@ -1,16 +1,16 @@
 [
     {
-        "modid": "CoFHCore",
-        "name": "CoFH Core",
-        "description": "CoFH Core Module",
-        "version": "3.0.0B6",
-        "credits": "Team CoFH",
+        "modid": "Tesla Armor",
+        "name": "Tesla Armor",
+        "description": "Mod That Adds Tesla Armor",
+        "version": "1.0.0",
+        "credits": "Xile & Team CoFH",
         "logoFile": "",
         "mcversion": "1.7.10",
-        "url": "http://www.teamcofh.com",
+        "url": "www.InfiniXNetwor.enjin.com",
         "updateUrl": "",
         "authors": [
-            "Team CoFH"
+            "Xile"
         ],
         "parent": "",
         "screenshots": [],
