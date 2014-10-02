@@ -23,7 +23,6 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
 
 
     public static final ArmorProperties UNBLOCKABLE = new ArmorProperties(0, 0.0D, 0);
-    public static final ArmorProperties Tesla = new ArmorProperties(0, 0.5D, Integer.MAX_VALUE);
 
     public static int EnergyStored;
 
@@ -129,9 +128,7 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot) {
 
-        if (source.damageType.equals("Tesla")) {
-            return Tesla;
-        } else if (source.isUnblockable()) {
+        if (source.isUnblockable()) {
             return UNBLOCKABLE;
         }
         int absorbMax = energyPerDamage > 0 ? 25 * getEnergyStored(armor) / energyPerDamage : 0;
@@ -150,11 +147,9 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     @Override
     public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
 
-        if (source.damageType.equals("Tesla")) {
-            receiveEnergy(stack, damage * energyPerDamage, false);
-        } else {
-            extractEnergy(stack, damage * energyPerDamage, false);
-        }
+       
+        extractEnergy(stack, damage * energyPerDamage, false);
+        
     }
 
     /* IEnergyContainerItem */
