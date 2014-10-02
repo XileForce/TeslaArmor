@@ -25,7 +25,7 @@ public class KeyInputHandler {
             FlightOn ^= true;
         if (FlightOn == true) System.out.println("Flight On");
         if (FlightOn == false)
-        System.out.println("Armor Powered Off");
+        System.out.println("Flight Off");
 
 
         if(TeslaMainLoader.SwordToggle.isPressed())

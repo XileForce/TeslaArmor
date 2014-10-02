@@ -19,6 +19,7 @@ import java.util.List;
 public class EventHandler {
     EntityLivingBase ent;
     World world;
+    public static boolean Flight;
     @SubscribeEvent
     public void onLivingUpdateEvent(LivingEvent.LivingUpdateEvent event) {
         // This event has an Entity variable, access it like this:
@@ -26,16 +27,30 @@ public class EventHandler {
 // do something to player every update tick:
         if (event.entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.entity;
+            //0 is Boots
+            //1 is Legs
+            //2 is Chest
+            //3 is Helm
 
-            //Currently Detects Keypresses to toggle flight but works without armor worn...unsure why
 
-            if (player.inventory.armorItemInSlot(2) == ItemLoader.ArmorTeslaChest && (TeslaArmor.NoPower != true) && (KeyInputHandler.FlightOn == true)) {
+            //Tesla Chestplate ElectroStatic Flight Ability
+
+            if ((TeslaArmor.TChestWorn == true) && (TeslaArmor.EnergyStored > 0) && (KeyInputHandler.FlightOn == true)) {
                 player.capabilities.allowFlying = true;
-            } else if (player.inventory.armorItemInSlot(2) != ItemLoader.ArmorTeslaChest && !player.capabilities.isCreativeMode || (TeslaArmor.NoPower == true) || KeyInputHandler.FlightOn == false) {
+                Flight = true;
+            }
+            if ((TeslaArmor.TChestWorn == false && !player.capabilities.isCreativeMode) || (TeslaArmor.EnergyStored <= 0) || (KeyInputHandler.FlightOn == false)) {
                 player.capabilities.allowFlying = false;
                 player.capabilities.isFlying = false;
-
-
+            }
+            if ((TeslaArmor.TChestWorn == false) || (TeslaArmor.EnergyStored <= 0) || (KeyInputHandler.FlightOn == false))
+            Flight = false;
+            //Legs SpeedBoost
+            if (TeslaArmor.TLegsWorn == true && (TeslaArmor.EnergyStored > 0)) {
+                player.capabilities.setPlayerWalkSpeed(0.2F);
+            }
+            if (TeslaArmor.TLegsWorn == false || TeslaArmor.EnergyStored <= 0){
+                player.capabilities.setPlayerWalkSpeed(0.1F);
             }
 
             }

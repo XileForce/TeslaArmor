@@ -41,13 +41,13 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     public static final ArmorProperties Tesla = new ArmorProperties(0, 0.5D, Integer.MAX_VALUE);
 
     public static boolean NoPower;
-    public int EnergyStored;
+    public static int EnergyStored;
 
 
     public int maxEnergy = 550000;
     public int maxTransfer = 2500;
 
-    public double absorbRatio = 0.85D;
+    public double absorbRatio = 0.88D;
     public int energyPerDamage = 95;
 
     public String[] textures = new String[2];
@@ -91,6 +91,10 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
             list.add("Tesla AOE Effect Activated");
         if (KeyInputHandler.ArmorOn == false)
             list.add("Tesla AOE Effect Deactivated");
+        if (EventHandler.Flight == true)
+            list.add("Flight Mode On");
+        if (EventHandler.Flight == false)
+            list.add("Flight Mode Off");
     }
 
     @Override
@@ -216,15 +220,17 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
         return maxEnergy;
     }
 
-    //Tesla AOE
-
-
-
-
 
 //Armor Effects
 int Ticks = 0;
-
+public static ItemStack armorslot0;
+public static ItemStack armorslot1;
+public static ItemStack armorslot2;
+public static ItemStack armorslot3;
+public static boolean TBootsWorn;
+public static boolean TLegsWorn;
+public static boolean TChestWorn;
+public static boolean THelmWorn;
 
 @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack armor) {
@@ -232,36 +238,67 @@ int Ticks = 0;
     //1 is Legs
     //2 is Chest
     //3 is Helm
-    ItemStack armorslot = player.inventory.armorItemInSlot(0);
-    System.out.println(armorslot + " Is Equipped");
+    armorslot0 = player.inventory.armorItemInSlot(0);
+    armorslot1 = player.inventory.armorItemInSlot(1);
+    armorslot2 = player.inventory.armorItemInSlot(2);
+    armorslot3 = player.inventory.armorItemInSlot(3);
 
-    if (player.inventory.armorItemInSlot(0) == ItemLoader.ArmorTeslaBoots) {
-        System.out.println("Boots worn");
+    //Detects Armor Worn By Player
+
+    if (armorslot0 != null && armorslot0.getItem() == ItemLoader.itemBootsTesla) {
+        TBootsWorn = true;
     }
+    if (armorslot0 == null || armorslot0.getItem() != ItemLoader.itemBootsTesla) {
+        TBootsWorn = false;
+    }
+
+    if ( armorslot1 != null && armorslot1.getItem() == ItemLoader.itemLegsTesla) {
+        TLegsWorn = true;
+    }
+    if (armorslot1 == null || armorslot1.getItem() != ItemLoader.itemLegsTesla) {
+        TLegsWorn = false;
+    }
+
+    if (armorslot2 != null && armorslot2.getItem() == ItemLoader.itemChestTesla) {
+        TChestWorn = true;
+    }
+    if (armorslot2 == null || armorslot2.getItem() != ItemLoader.itemChestTesla) {
+        TChestWorn = false;
+    }
+
+    if (armorslot3 != null && armorslot3.getItem() == ItemLoader.itemHelmetTesla) {
+        THelmWorn = true;
+    }
+    if (armorslot3 == null || armorslot3.getItem() != ItemLoader.itemHelmetTesla) {
+        THelmWorn = false;
+    }
+
+//Sets Up The NoPower Boolean And The EnergyStored Integer For Ease Of Use
     EnergyStored = armor.stackTagCompound.getInteger("Energy");
-    if (EnergyStored < 1) NoPower = true;
+    if (EnergyStored <= 0) NoPower = true;
 
     //Just A Test For Charging Armor Without External Mods!
     if (KeyInputHandler.ArmorOn == false)
         armor.stackTagCompound.setInteger("Energy", (EnergyStored + 1000));
 
-    //PotionEffects Not sure why they dont work when all armor equipped... is weird..
+    //PotionEffects
 
-    if (player.inventory.armorItemInSlot(2) == ItemLoader.ArmorTeslaLegs) {
-        if (NoPower != true)
-            player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 500, 4));
-    }
-
-
-    if (player.inventory.armorItemInSlot(3) == ItemLoader.ArmorTeslaBoots) {
-        if (NoPower != true)
+    if (TBootsWorn == true && (EnergyStored > 0)) {
             player.addPotionEffect(new PotionEffect(Potion.jump.id, 500, 4));
     }
+    if (EventHandler.Flight == true){
+        armor.stackTagCompound.setInteger("Energy", (EnergyStored - 50));
+    }
+    //lets try and avoid negative energy levels...
+if (EnergyStored < 0)
+    armor.stackTagCompound.setInteger("Energy", 0);
+if (EnergyStored > 550000)
+    armor.stackTagCompound.setInteger("Energy", 550000);
 
     //Attempt at Entity scan and target
     //Works But needs to filter player now.
-    if (KeyInputHandler.ArmorOn == true && (NoPower == false)) {
-            armor.stackTagCompound.setInteger("Energy", (EnergyStored - 800));
+    if (KeyInputHandler.ArmorOn == true && (EnergyStored > 0) && TChestWorn == true && THelmWorn == true && TLegsWorn == true && TBootsWorn == true) {
+            armor.stackTagCompound.setInteger("Energy", (EnergyStored - 450));
 
             List entities = player.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(player.posX - 12, player.posY - 12, player.posZ - 12, player.posX + 12, player.posY + 12, player.posZ + 12));
             if (entities != null && !entities.isEmpty()) {
@@ -275,25 +312,28 @@ int Ticks = 0;
                 Ticks++;
                 System.out.println("This many ticks has passed " + Ticks);
 
-                while (iterator.hasNext() && (Ticks >= 50)) {
+                while (iterator.hasNext() && (Ticks >= 40)) {
 
                     ent = (EntityLivingBase) iterator.next();
                     posX = ent.posX;
                     posY = ent.posY;
                     posZ = ent.posZ;
-
-
-                    EntityLightningBolt Lightning = new EntityLightningBolt(world, posX, posY, posZ);
-                    world.spawnEntityInWorld(Lightning);
-                    Ticks = 0;
+//Pretty sure this is going to only ignore the player wearing the armor...could be wrong though...
+                 if (ent != null && ent != player) {
+                     EntityLightningBolt Lightning = new EntityLightningBolt(world, posX, posY, posZ);
+                     world.spawnEntityInWorld(Lightning);
+                     Ticks = 0;
+                 }
                     {
+
+                    }
 
                     }
 
                 }
             }
         }
-    }
+
 
 
 
