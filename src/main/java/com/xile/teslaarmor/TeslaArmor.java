@@ -40,7 +40,6 @@ public class TeslaArmor extends ItemArmorAdv implements ISpecialArmor, IEnergyCo
     public static final ArmorProperties UNBLOCKABLE = new ArmorProperties(0, 0.0D, 0);
     public static final ArmorProperties Tesla = new ArmorProperties(0, 0.5D, Integer.MAX_VALUE);
 
-    public static boolean NoPower;
     public static int EnergyStored;
 
 
@@ -275,7 +274,6 @@ public static boolean THelmWorn;
 
 //Sets Up The NoPower Boolean And The EnergyStored Integer For Ease Of Use
     EnergyStored = armor.stackTagCompound.getInteger("Energy");
-    if (EnergyStored <= 0) NoPower = true;
 
     //Just A Test For Charging Armor Without External Mods!
     if (KeyInputHandler.ArmorOn == false)
@@ -292,6 +290,7 @@ public static boolean THelmWorn;
     //lets try and avoid negative energy levels...
 if (EnergyStored < 0)
     armor.stackTagCompound.setInteger("Energy", 0);
+    //And Too much power...
 if (EnergyStored > 550000)
     armor.stackTagCompound.setInteger("Energy", 550000);
 
